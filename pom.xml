@@ -34,6 +34,10 @@
             <name>Zecheng Zhao</name>
             <email>zhechengzhao@yirendai.com</email>
         </developer>
+        <developer>
+            <name>Jian Liang</name>
+            <email>jianliang9@yirendai.com</email>
+        </developer>
     </developers>
 
     <issueManagement>
@@ -945,7 +949,7 @@
                 <github.global.server>github</github.global.server>
                 <!--github.global.oauth2Token>${env.GITHUB_GIT_SERVICE_TOKEN}</github.global.oauth2Token-->
                 <github.global.oauth2Token>${env.GITHUB_GIT_SERVICE_TOKEN}</github.global.oauth2Token>
-                <github.site.path>${project.version}</github.site.path>
+                <!--<github.site.path>${project.version}</github.site.path>-->
                 <!-- In child projects
                 Do not add url. Let it inherit from parent.
                 <github.site.path>${project.version}/${project.artifactId}</github.site.path>
@@ -963,10 +967,13 @@
                 </snapshotRepository>
                 <!-- Do mvn site site:stage -DstagingDirectory=/tmp/path first,
                 then manually add/push to the gh-pages branch on GitHub -->
-                <!--site>
+                <site>
                     <id>github-site</id>
-                    <url>http://${env.GITHUB_USERNAME}.github.io/${project.artifactId}/${project.version}</url>
-                </site-->
+                    <name>Deployment through GitHub's site deployment plugin</name>
+                    <!--If sub projects/module inherit the site URL from a parent POM,they will automatically append their <artifactId>
+                    to their effective deployment location. More info in http://maven.apache.org/guides/mini/guide-site.html-->
+                    <url>${project.version}${env.BUILD_SITE_PATH_PREFIX}</url>
+                </site>
             </distributionManagement>
             <build>
                 <plugins>
@@ -975,11 +982,11 @@
                         <artifactId>site-maven-plugin</artifactId>
                         <configuration>
                             <message>Creating site for ${project.artifactId}-${project.version}</message>
-                            <path>${github.site.path}</path>
-                            <!--path>${project.distributionManagement.site.url}</path-->
+                            <path>${project.distributionManagement.site.url}</path>
                             <merge>true</merge>
                             <noJekyll>true</noJekyll>
-                            <repositoryOwner>${env.GITHUB_USERNAME}</repositoryOwner>
+                            <repositoryOwner>${env.BUILD_SITE_GITHUB_REPOSITORY_OWNER}</repositoryOwner>
+                            <repositoryName>${env.BUILD_SITE_GITHUB_REPOSITORY_NAME}</repositoryName>
                         </configuration>
                         <executions>
                             <execution>

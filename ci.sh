@@ -16,7 +16,10 @@ fi
 
 export BUILD_PUBLISH_DEPLOY_SEGREGATION="true"
 export BUILD_SITE="true"
-export BUILD_SITE_PATH_PREFIX="oss"
+# for github ,this will used for sub dir on home1-oss/home1-oss#gh-pages
+export BUILD_SITE_PATH_PREFIX=""
+export BUILD_SITE_GITHUB_REPOSITORY_OWNER="home1-oss"
+export BUILD_SITE_GITHUB_REPOSITORY_NAME="home1-oss"
 export BUILD_TEST_FAILURE_IGNORE="false"
 export BUILD_TEST_SKIP="false"
 
