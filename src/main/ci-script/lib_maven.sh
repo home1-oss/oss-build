@@ -17,9 +17,12 @@ else
     export MAVEN_SETTINGS="${MAVEN_SETTINGS} -s $(pwd)/src/main/maven/settings-${INFRASTRUCTURE}.xml"
 fi
 
-if [ -n "${MAVEN_SETTINGS_SECURITY_FILE}" ]; then
-    export MAVEN_OPTS="${MAVEN_OPTS} -Dsettings.security=${MAVEN_SETTINGS_SECURITY_FILE}"
+# fix security problem ,download if not specify security file
+if [ -z "${MAVEN_SETTINGS_SECURITY_FILE}" ]; then MAVEN_SETTINGS_SECURITY_FILE=${CI_CACHE}/settings-security.xml; fi
+if [ ! -f "${MAVEN_SETTINGS_SECURITY_FILE}" ]; then
+    curl -H 'Cache-Control: no-cache' -H "PRIVATE-TOKEN: ${GIT_SERVICE_TOKEN}" -t utf-8 -s -L -o ${MAVEN_SETTINGS_SECURITY_FILE} ${BUILD_CONFIG_LOC}/src/main/maven/settings-security.xml
 fi
+if [ -f "${MAVEN_SETTINGS_SECURITY_FILE}" ];then export MAVEN_OPTS="${MAVEN_OPTS} -Dsettings.security=${MAVEN_SETTINGS_SECURITY_FILE}"; fi
 
 if [ -n "${BUILD_JIRA_PROJECTKEY}" ]; then
     export MAVEN_OPTS="${MAVEN_OPTS} -Djira.projectKey=${BUILD_JIRA_PROJECTKEY} -Djira.user=${BUILD_JIRA_USER} -Djira.password=${BUILD_JIRA_PASSWORD}"
@@ -30,6 +33,7 @@ EFFECTIVE_POM_FILE="${CI_CACHE}/effective-pom-${COMMIT_ID}.xml"
 
 # 本地Repo临时地址，后续发布会从此目录deploy到远程仓库
 DEPLOY_LOCAL_REPO_IF_NEED="${HOME}/local-deploy/${COMMIT_ID}"
+if [ ! -d "${DEPLOY_LOCAL_REPO_IF_NEED}" ]; then mkdir -p ${DEPLOY_LOCAL_REPO_IF_NEED}; fi
 
 echo "maven_settings: ${MAVEN_SETTINGS} effective-pom: ${EFFECTIVE_POM_FILE}"
 # log output avoid travis timeout
