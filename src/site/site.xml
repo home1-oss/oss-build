@@ -33,6 +33,21 @@
         <menu name="Projects">
             <item href="oss-archetype/index.html" name="oss-archetype" />
             <item href="#" name="-----" />
+            <item href="oss-common-dependencies/index.html" name="oss-common-dependencies" />
+            <item href="oss-lib-common/index.html" name="oss-lib-common" />
+            <item href="oss-lib-errorhandle/index.html" name="oss-lib-errorhandle" />
+            <item href="oss-lib-log4j2/index.html" name="oss-lib-log4j2" />
+            <item href="oss-lib-swagger/index.html" name="oss-lib-swagger" />
+            <item href="oss-lib-security/index.html" name="oss-lib-security" />
+            <item href="oss-lib-webmvc/index.html" name="oss-lib-webmvc" />
+            <item href="oss-lib-adminclient/index.html" name="oss-lib-adminclient" />
+            <item href="oss-lib-hystrix/index.html" name="oss-lib-hystrix" />
+            <item href="#" name="-----" />
+            <item href="oss-platform/index.html" name="oss-platform" />
+            <item href="oss-samples/index.html" name="oss-samples" />
+            <item href="#" name="-----" />
+            <item href="oss-environment/index.html" name="oss-environment" />
+            <item href="oss-incubator/index.html" name="oss-incubator" />
         </menu>
         <menu ref="modules" />
         <!--menu ref="reports" /-->
