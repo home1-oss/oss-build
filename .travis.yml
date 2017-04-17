@@ -29,8 +29,7 @@ jdk:
 language: java
 script:
 - echo "on_every_push"
-- bash ci.sh test_and_build
-- bash ci.sh publish_snapshot
+- bash ci.sh test_and_build && bash ci.sh publish_snapshot
 services:
 - docker
 sudo: required

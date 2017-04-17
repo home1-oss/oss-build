@@ -17,8 +17,9 @@ else
     export MAVEN_SETTINGS="${MAVEN_SETTINGS} -s $(pwd)/src/main/maven/settings-${INFRASTRUCTURE}.xml"
 fi
 
-if [ -n "${MAVEN_SETTINGS_SECURITY_FILE}" ]; then
-    export MAVEN_OPTS="${MAVEN_OPTS} -Dsettings.security=${MAVEN_SETTINGS_SECURITY_FILE}"
+# offline ,should download file in ci.sh or other way
+if [ -n "${MAVEN_SETTINGS_SECURITY_FILE}" ] && [ -f "${MAVEN_SETTINGS_SECURITY_FILE}" ];then
+    export MAVEN_OPTS="${MAVEN_OPTS} -Dsettings.security=${MAVEN_SETTINGS_SECURITY_FILE}";
 fi
 
 if [ -n "${BUILD_JIRA_PROJECTKEY}" ]; then
@@ -30,6 +31,7 @@ EFFECTIVE_POM_FILE="${CI_CACHE}/effective-pom-${COMMIT_ID}.xml"
 
 # 本地Repo临时地址，后续发布会从此目录deploy到远程仓库
 DEPLOY_LOCAL_REPO_IF_NEED="${HOME}/local-deploy/${COMMIT_ID}"
+if [ ! -d "${DEPLOY_LOCAL_REPO_IF_NEED}" ]; then mkdir -p ${DEPLOY_LOCAL_REPO_IF_NEED}; fi
 
 echo "maven_settings: ${MAVEN_SETTINGS} effective-pom: ${EFFECTIVE_POM_FILE}"
 # log output avoid travis timeout
