@@ -55,6 +55,9 @@ maven_pull_base_images() {
 }
 
 maven_analysis() {
+    export MAVEN_OPTS="${MAVEN_OPTS} -Dsonar.organization=${SONAR_ORGANIZATION}"
+    export MAVEN_OPTS="${MAVEN_OPTS} -Dsonar.login=${SONAR_LOGIN_TOKEN}"
+
     if [[ "$(basename $(pwd))" == *-config ]] && ([ -f "application.yml" ] || [ -f "application.properties" ]); then
         echo "maven_analysis config repository"
         mvn ${MAVEN_SETTINGS} -U clean package | grep -v 'Downloading:' | grep -Ev '^Generating .+\.html\.\.\.'
