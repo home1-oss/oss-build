@@ -7,7 +7,7 @@ if [ -f codesigning.asc.enc ] && [ "${TRAVIS_PULL_REQUEST}" == 'false' ]; then
 fi
 
 export BUILD_SITE_PATH_PREFIX="oss"
-export BUILD_SKIP_SONAR="true"
+export BUILD_SKIP_SONAR="false"
 
 
 
