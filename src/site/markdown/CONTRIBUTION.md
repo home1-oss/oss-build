@@ -15,7 +15,7 @@
 
 >如果忘记了启动之前需要master分支, 可以通过以下任意一种方法补救
   1.pull下来master分支并重启本地git服务
-  2.执行`(cd oss-build; git push local-git master:master;)` 
+  2.执行`(cd oss-build; git push gitlab.local master:master;)` 
 
   自动设置oss开发环境
   via curl

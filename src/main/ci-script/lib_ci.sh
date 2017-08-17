@@ -213,7 +213,7 @@ maven_analysis() {
     if is_config_repository; then
         echo "maven_analysis config repository"
         mvn ${MAVEN_SETTINGS} -U clean package | ${FILTER_SCRIPT}
-    else
+    elif [ "${BUILD_SKIP_SONAR}" != "true" ]; then
         echo "maven_analysis sonar"
         mvn ${MAVEN_SETTINGS} sonar:sonar
     fi

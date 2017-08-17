@@ -28,9 +28,9 @@ on_develop_push:
 #  stage: publish
 
 on_non_release_push:
-#  artifacts:
-#    expire_in: 1 day
-#    untracked: true
+  artifacts:
+    expire_in: 1 day
+    untracked: true
   except:
   - /^release\/.+$/
   script:
@@ -51,3 +51,6 @@ stages:
 - analysis
 - build
 - publish
+
+# see: https://gitlab.com/gitlab-org/gitlab-ce/blob/master/doc/ci/yaml/README.md
+# see: https://gitlab.com/gitlab-org/gitlab-ce/issues/3423

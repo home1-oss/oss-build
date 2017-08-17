@@ -73,7 +73,7 @@ oss-build父pom是用于管理软件工程的, 它不定义依赖版本.
 
 + local_nexus
     > 使用用户本地的nexus服务(详见[oss-environment/oss-docker/nexus3](../oss-environment/OSS_DOCKER_LOCALNEXUS.html)),
-    并且将网站发布到本地的maven网站(详见[oss-environment/oss-docker/mvn-site](../oss-environment/OSS_DOCKER_MVNSITE.html))上.
+    并且将网站发布到本地的maven网站(详见[oss-environment/oss-docker/mvnsite](../oss-environment/OSS_DOCKER_MVNSITE.html))上.
 
 + site
     > 生成项目的网站,使用`mvn -Dsite=true site site:stage site:stage-deploy`激活并构建网站,使用`-Dsite.path=oss-build-snapshot`指定网站在目标服务器上的目录名.我们通常将网站发布到一台打开列目录选项的nginx服务器上.
