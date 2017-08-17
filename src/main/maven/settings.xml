@@ -10,9 +10,17 @@
     <offline/>
 
     <proxies>
+        <!--proxy>
+            <id>http-proxy</id>
+            <active>true</active>
+            <protocol>http</protocol>
+            <host>127.0.0.1</host>
+            <port>8080</port>
+        </proxy-->
     </proxies>
 
     <mirrors>
+        <!-- Do not use variable substitution in mirrors when using an IDE, it does not works. -->
         <!-- mirrorOf: pom.xml repositories repository id -->
         <!--mirror>
             <id>local-nexus3-mirror</id>
@@ -59,7 +67,7 @@
         <!-- see: http://maven.apache.org/guides/mini/guide-encryption.html -->
         <!-- mvn &#x002d;&#x002d;encrypt-password ${password} -->
         <!-- accept RSA key fingerprint -->
-        <!-- ssh -o UserKnownHostsFile=~/.ssh/known_hosts root@local-mvnsite -p 10022 -->
+        <!-- ssh -o UserKnownHostsFile=~/.ssh/known_hosts root@mvnsite.local -p 10022 -->
         <server>
             <id>local-nexus3-releases</id>
             <username>deployment</username>
@@ -80,7 +88,7 @@
             <!--username>root</username>
             <password>root</password-->
             <!--username>root</username>
-            <privateKey>${user.home}/.ssh/local-mvnsite</privateKey-->
+            <privateKey>${user.home}/.ssh/mvnsite.local</privateKey-->
             <username>deployment</username>
             <password>deployment</password>
             <configuration>
@@ -110,7 +118,7 @@
             <id>internal-mvnsite</id>
             <username>root</username>
             <!--passphrase>if required</passphrase-->
-            <privateKey>${user.home}/.ssh/internal-mvnsite</privateKey>
+            <privateKey>${user.home}/.ssh/mvnsite.internal</privateKey>
             <configuration>
                 <!-- see: https://maven.apache.org/wagon/apidocs/index.html -->
                 <!-- java.lang.ClassNotFoundException: org.apache.maven.wagon.providers.ssh.knownhost.NullKnownHostProvider -->
@@ -234,7 +242,7 @@
             <id>infrastructure-local</id>
             <properties>
                 <sonar.host.url>${local-sonar.host.url}</sonar.host.url>
-                <!--sonar.jdbc.url>jdbc:h2:tcp://local-sonarqube/sonar</sonar.jdbc.url>
+                <!--sonar.jdbc.url>jdbc:h2:tcp://sonarqube.local/sonar</sonar.jdbc.url>
                 <sonar.jdbc.url>jdbc:postgresql://postgresql.local:5432/sonar</sonar.jdbc.url-->
             </properties>
             <repositories>

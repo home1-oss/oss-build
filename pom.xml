@@ -9,7 +9,7 @@
     <name>oss-build</name>
     <packaging>pom</packaging>
     <url>https://github.com/home1-oss/oss-build</url>
-    <version>1.0.11.OSS</version>
+    <version>1.0.12.OSS-SNAPSHOT</version>
 
     <ciManagement>
         <system>Travis CI</system>
@@ -223,7 +223,7 @@
                 <plugin>
                     <groupId>org.sonarsource.scanner.maven</groupId>
                     <artifactId>sonar-maven-plugin</artifactId>
-                    <version>3.2</version>
+                    <version>3.3.0.603</version>
                 </plugin>
                 <plugin>
                     <artifactId>maven-antrun-plugin</artifactId>
@@ -989,7 +989,6 @@
                 <docker-maven.useConfigFile>true</docker-maven.useConfigFile>
                 <!-- id as in your settings.xml -->
                 <github.global.server>github</github.global.server>
-                <!--github.global.oauth2Token>${env.GITHUB_INFRASTRUCTURE_CONF_GIT_TOKEN}</github.global.oauth2Token-->
                 <github.global.oauth2Token>${env.GITHUB_INFRASTRUCTURE_CONF_GIT_TOKEN}</github.global.oauth2Token>
                 <!--<github.site.path>${project.version}</github.site.path>-->
                 <!-- In child projects
