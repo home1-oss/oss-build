@@ -130,7 +130,8 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <downloadSources>true</downloadSources>
 
-        <sonar.language>java</sonar.language>
+        <!-- sonar.java.binaries issue when force language java  -->
+        <!--sonar.language>java</sonar.language-->
         <sonar.sourceEncoding>UTF-8</sonar.sourceEncoding>
     </properties>
 
