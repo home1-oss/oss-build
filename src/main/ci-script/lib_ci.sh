@@ -231,7 +231,7 @@ maven_clean() {
 maven_clean_test_and_build() {
     echo "maven_clean_test_and_build"
     export MAVEN_OPTS="${MAVEN_OPTS} -Dmaven.test.skip=${BUILD_TEST_SKIP}"
-    export MAVEN_OPTS="${MAVEN_OPTS} -Dmaven.integration-test.skip=${BUILD_TEST_SKIP}"
+    export MAVEN_OPTS="${MAVEN_OPTS} -Dmaven.integration-test.skip=${BUILD_INTEGRATION_TEST_SKIP}"
 
     maven_pull_base_image
     if [ "true" == "${BUILD_PUBLISH_DEPLOY_SEGREGATION}" ]; then
@@ -246,7 +246,7 @@ maven_clean_test_and_build() {
 maven_test_and_build() {
     echo "maven_test_and_build"
     export MAVEN_OPTS="${MAVEN_OPTS} -Dmaven.test.skip=${BUILD_TEST_SKIP}"
-    export MAVEN_OPTS="${MAVEN_OPTS} -Dmaven.integration-test.skip=${BUILD_TEST_SKIP}"
+    export MAVEN_OPTS="${MAVEN_OPTS} -Dmaven.integration-test.skip=${BUILD_INTEGRATION_TEST_SKIP}"
 
     maven_pull_base_image
     if [ "true" == "${BUILD_PUBLISH_DEPLOY_SEGREGATION}" ]; then
@@ -314,6 +314,9 @@ if [ -z "${BUILD_TEST_FAILURE_IGNORE}" ]; then BUILD_TEST_FAILURE_IGNORE="false"
 echo "BUILD_TEST_FAILURE_IGNORE: ${BUILD_TEST_FAILURE_IGNORE}"
 if [ -z "${BUILD_TEST_SKIP}" ]; then BUILD_TEST_SKIP="false"; fi
 echo "BUILD_TEST_SKIP: ${BUILD_TEST_SKIP}"
+if [ -z "${BUILD_INTEGRATION_TEST_SKIP}" ]; then BUILD_INTEGRATION_TEST_SKIP="false"; fi
+if [ "${BUILD_TEST_SKIP}" == "true" ]; then BUILD_INTEGRATION_TEST_SKIP="true"; fi
+echo "BUILD_INTEGRATION_TEST_SKIP: ${BUILD_INTEGRATION_TEST_SKIP}"
 
 # 配置maven选项
 # frontend.nodeDownloadRoot
@@ -450,6 +453,8 @@ gradle_clean_test_and_build() {
 
     if [ "true" == "${BUILD_TEST_SKIP}" ]; then
         gradle --refresh-dependencies --stacktrace ${GRADLE_PROPERTIES} clean build ${signArchives} install -x test
+    elif [ "true" == "${BUILD_INTEGRATION_TEST_SKIP}" ]; then
+        gradle --refresh-dependencies --stacktrace ${GRADLE_PROPERTIES} clean build ${signArchives} install
     else
         gradle --refresh-dependencies --stacktrace ${GRADLE_PROPERTIES} clean build ${signArchives} integrationTest install
     fi
@@ -464,6 +469,8 @@ gradle_test_and_build() {
 
     if [ "true" == "${BUILD_TEST_SKIP}" ]; then
         gradle --refresh-dependencies --stacktrace ${GRADLE_PROPERTIES} build ${signArchives} install -x test
+    elif [ "true" == "${BUILD_INTEGRATION_TEST_SKIP}" ]; then
+        gradle --refresh-dependencies --stacktrace ${GRADLE_PROPERTIES} build ${signArchives} install
     else
         gradle --refresh-dependencies --stacktrace ${GRADLE_PROPERTIES} build ${signArchives} integrationTest install
     fi
