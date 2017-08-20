@@ -36,6 +36,7 @@ while IFS='' read -r LINE
 do
     echo "\${LINE}" \
         | grep -v 'Downloading:' \
+        | grep -Ev '^Progress ' \
         | grep -Ev '^Generating .+\.html\.\.\.'
 done
 EOL
@@ -197,6 +198,7 @@ fi
 
 # >>>>>>>>>> ---------- lib_maven ---------- >>>>>>>>>>
 maven_pull_base_image() {
+    # TODO multi module project
     if type -p docker > /dev/null; then
         if [ -f src/main/resources/docker/Dockerfile ]; then
             if [ ! -f src/main/docker/Dockerfile ]; then
