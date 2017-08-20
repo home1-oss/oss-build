@@ -50,8 +50,8 @@ pom进行静态代码检查，或只是使用它包含的其他软件工程工�
     - [oss-lib](../oss-lib/)微服务程序库, 用户一般通过引入oss-platform使用.
     - [oss-platform](../oss-platform/)整合技术栈依赖管理和微服务程序库.
     - [oss-samples](../oss-samples/)样例项目, 展示如何利用oss提供的服务和库.
-    - [common-config](http://gitlab.internal/configserver/common-config)公共配置, 通过oss-configserver提供给微服务.
-    - [oss-todomvc-app-config](http://gitlab.internal/configserver/oss-todomvc-app-config)todomvc样例项目的配置, 通过oss-configserver提供给样例服务.
-    - [oss-todomvc-gateway-config](http://gitlab.internal/configserver/oss-todomvc-gateway-config)todomvc样例项目的配置, 通过oss-configserver提供给样例服务.
-    - [oss-todomvc-thymeleaf-config](http://gitlab.internal/configserver/oss-todomvc-thymeleaf-config)todomvc样例项目的配置, 通过oss-configserver提供给样例服务.
+    - [common-config](https://github.com/home1-oss/common-config)公共配置, 通过oss-configserver提供给微服务.
+    - [oss-todomvc-app-config](https://github.com/home1-oss/oss-todomvc-app-config)todomvc样例项目的配置, 通过oss-configserver提供给样例服务.
+    - [oss-todomvc-gateway-config](https://github.com/home1-oss/oss-todomvc-gateway-config)todomvc样例项目的配置, 通过oss-configserver提供给样例服务.
+    - [oss-todomvc-thymeleaf-config](https://github.com/home1-oss/oss-todomvc-thymeleaf-config)todomvc样例项目的配置, 通过oss-configserver提供给样例服务.
 
