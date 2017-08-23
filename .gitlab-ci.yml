@@ -48,8 +48,8 @@ on_release_push:
   stage: publish
 
 stages:
-- analysis
 - build
+- analysis
 - publish
 
 # see: https://gitlab.com/gitlab-org/gitlab-ce/blob/master/doc/ci/yaml/README.md

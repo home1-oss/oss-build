@@ -217,7 +217,7 @@ maven_analysis() {
         mvn ${MAVEN_SETTINGS} -U clean package | ${FILTER_SCRIPT}
     elif [ "${BUILD_SKIP_SONAR}" != "true" ]; then
         echo "maven_analysis sonar"
-        mvn ${MAVEN_SETTINGS} compile sonar:sonar
+        mvn ${MAVEN_SETTINGS} sonar:sonar
     fi
 }
 
