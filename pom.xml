@@ -9,7 +9,7 @@
     <name>oss-build</name>
     <packaging>pom</packaging>
     <url>https://github.com/home1-oss/oss-build</url>
-    <version>1.0.12.OSS</version>
+    <version>1.0.13.OSS-SNAPSHOT</version>
 
     <ciManagement>
         <system>Travis CI</system>
