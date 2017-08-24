@@ -217,15 +217,15 @@ maven_analysis() {
         mvn ${MAVEN_SETTINGS} -U clean package | ${FILTER_SCRIPT}
     elif [ "${BUILD_SKIP_SONAR}" != "true" ]; then
         echo "maven_analysis sonar"
-        mvn ${MAVEN_SETTINGS} sonar:sonar
+        mvn ${MAVEN_SETTINGS} -U sonar:sonar
     fi
 }
 
 maven_clean() {
     if [ "true" == "${BUILD_PUBLISH_DEPLOY_SEGREGATION}" ]; then
-        mvn ${MAVEN_SETTINGS} clean org.apache.maven.plugins:maven-antrun-plugin:run@clean-local-deploy-dir
+        mvn ${MAVEN_SETTINGS} -U clean org.apache.maven.plugins:maven-antrun-plugin:run@clean-local-deploy-dir
     else
-        mvn ${MAVEN_SETTINGS} clean
+        mvn ${MAVEN_SETTINGS} -U clean
     fi
 }
 
@@ -264,9 +264,9 @@ maven_publish_artifact() {
 
     #mvn ${MAVEN_SETTINGS} help:active-profiles
     if [ "true" == "${BUILD_PUBLISH_DEPLOY_SEGREGATION}" ]; then
-        mvn ${MAVEN_SETTINGS} org.codehaus.mojo:wagon-maven-plugin:merge-maven-repos@deploy-merge-maven-repos docker:build docker:push | ${FILTER_SCRIPT}
+        mvn ${MAVEN_SETTINGS} -U org.codehaus.mojo:wagon-maven-plugin:merge-maven-repos@deploy-merge-maven-repos docker:build docker:push | ${FILTER_SCRIPT}
     else
-        mvn ${MAVEN_SETTINGS} deploy | ${FILTER_SCRIPT}
+        mvn ${MAVEN_SETTINGS} -U deploy | ${FILTER_SCRIPT}
     fi
 }
 
@@ -277,9 +277,9 @@ maven_publish_site(){
     # deploy first, then build site
     if [ "github" == "${INFRASTRUCTURE}" ]; then
         # -X enable debug logging for Maven to avoid build timeout
-        mvn ${MAVEN_SETTINGS} site site-deploy | ${FILTER_SCRIPT}
+        mvn ${MAVEN_SETTINGS} -U site site-deploy | ${FILTER_SCRIPT}
     else
-        echo yes | mvn ${MAVEN_SETTINGS} site:site site:stage site:stage-deploy | ${FILTER_SCRIPT}
+        echo yes | mvn ${MAVEN_SETTINGS} -U site:site site:stage site:stage-deploy | ${FILTER_SCRIPT}
     fi
 }
 
