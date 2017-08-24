@@ -23,6 +23,12 @@
         <!-- Do not use variable substitution in mirrors when using an IDE, it does not works. -->
         <!-- mirrorOf: pom.xml repositories repository id -->
         <!--mirror>
+            <id>central-repo1</id>
+            <name>central-repo1</name>
+            <url>http://repo1.maven.org/maven2</url>
+            <mirrorOf>central</mirrorOf>
+        </mirror-->
+        <!--mirror>
             <id>local-nexus3-mirror</id>
             <name>local nexus3 mirror</name>
             <url>${local-nexus3.repository}/maven-public/</url>
@@ -179,15 +185,6 @@
             </properties>
             <repositories>
                 <repository>
-                    <id>central</id>
-                    <name>Central Repository</name>
-                    <url>https://repo.maven.apache.org/maven2</url>
-                    <layout>default</layout>
-                    <snapshots>
-                        <enabled>false</enabled>
-                    </snapshots>
-                </repository>
-                <repository>
                     <id>OSSRH-releases</id>
                     <name>central releases</name>
                     <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
@@ -208,10 +205,9 @@
                     <name>Central Repository</name>
                     <url>https://repo.maven.apache.org/maven2</url>
                     <layout>default</layout>
-                    <snapshots>
-                        <enabled>false</enabled>
-                    </snapshots>
+                    <snapshots><enabled>false</enabled></snapshots>
                     <releases>
+                        <enabled>false</enabled>
                         <updatePolicy>never</updatePolicy>
                     </releases>
                 </pluginRepository>
