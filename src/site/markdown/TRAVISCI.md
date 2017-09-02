@@ -34,9 +34,9 @@ Variables in travis repo settings:
 |------------------------------------|:----------------------------------------------:|:------------------------------:|
 |GITHUB_SITE_REPO_OWNER              | for github maven site                          | Display value in build log     |
 |GITHUB_INFRASTRUCTURE_CONF_GIT_TOKEN| for github maven site and config fetch         | Not display value in build log |
-|                                   |                      |                                                           |
-|MAVEN_CENTRAL_USER                 | for deploy artifact  | Do not set on forked repo, Not display value in build log |
-|MAVEN_CENTRAL_PASS                 | for deploy artifact  | Do not set on forked repo, Not display value in build log |
+|                                    |                                                |                                |
+|MAVEN_CENTRAL_USER                  | for deploy artifact | Do not set on forked repo, Not display value in build log |
+|MAVEN_CENTRAL_PASS                  | for deploy artifact | Do not set on forked repo, Not display value in build log |
 
 ## Note
 
@@ -50,20 +50,20 @@ Variables in travis repo settings:
     install: true
 
 
-## deployment
+## Deploy to github releases
 
     # v is refered to gitflow-maven-plugin:versionTagPrefix
     before_deploy:
-      - export PROJECT_MAVEN_VERSION=${TRAVIS_TAG/v/}
+    - export PROJECT_MAVEN_VERSION=${TRAVIS_TAG/v/}
 
     deploy:
       provider: releases
       api_key: $GITHUB_INFRASTRUCTURE_CONF_GIT_TOKEN
-      file: "target/oss-configlint-${PROJECT_MAVEN_VERSION}.jar"
+      file: "target/oss-keygen-${PROJECT_MAVEN_VERSION}.jar"
       skip_cleanup: true
       on:
         tag: true
-        all_branches: true
+        #all_branches: true
 
     after_deploy:
-      - echo "deploy finished!"
+    - echo "deploy finished!"
