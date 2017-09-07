@@ -9,7 +9,7 @@
     <name>oss-build</name>
     <packaging>pom</packaging>
     <url>https://github.com/home1-oss/oss-build</url>
-    <version>1.0.12.OSS</version>
+    <version>1.0.15.OSS</version>
 
     <ciManagement>
         <system>Travis CI</system>
@@ -406,6 +406,11 @@
                             <artifactId>checkstyle</artifactId>
                             <version>6.19</version>
                         </dependency>
+                        <!--dependency>
+                            <groupId>com.puppycrawl.tools</groupId>
+                            <artifactId>checkstyle</artifactId>
+                            <version>8.1</version>
+                        </dependency-->
                     </dependencies>
                 </plugin>
                 <plugin>
