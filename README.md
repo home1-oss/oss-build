@@ -10,6 +10,9 @@ There are link issues on git service generated pages, see gitbook or maven site.
 Module to centralize common resources and configuration for open source stack builds.
 
 - Parent pom.xml for maven projects
+- Maven site
 - CI config
 - IDE config
 - Code style
+- Java version
+- Project encoding

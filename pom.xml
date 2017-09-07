@@ -406,6 +406,11 @@
                             <artifactId>checkstyle</artifactId>
                             <version>6.19</version>
                         </dependency>
+                        <!--dependency>
+                            <groupId>com.puppycrawl.tools</groupId>
+                            <artifactId>checkstyle</artifactId>
+                            <version>8.1</version>
+                        </dependency-->
                     </dependencies>
                 </plugin>
                 <plugin>

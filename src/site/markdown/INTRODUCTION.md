@@ -112,3 +112,20 @@ Add args on `maven site`
     jira.projectKey         # jira上的projectKey
     jira.user               # jira用户名
     jira.password           # jira密码
+
+## GPG issue
+```
+gpg: signing failed: Inappropriate ioctl for device
+```
+
+To solve the problem, you need to enable loopback pinentry mode.
+
+Add this to ~/.gnupg/gpg.conf:
+```
+use-agent 
+pinentry-mode loopback
+```
+And add this to ~/.gnupg/gpg-agent.conf, creating the file if it doesn't already exist:
+```
+allow-loopback-pinentry
+```
