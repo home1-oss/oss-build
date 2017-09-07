@@ -268,11 +268,13 @@ allprojects {
     install {
       repositories.mavenInstaller {
         pom.withXml(pomConfig)
-        pom.name = "${project.name}"
         if ( "${springBootVersion}" ) {
           pom.artifactId = "${project.name}-spring-boot-${springBootVersion}"
+          pom.name = "${project.name}-spring-boot-${springBootVersion}"
+        } else {
+          pom.artifactId = "${project.name}"
+          pom.name = "${project.name}"
         }
-        pom.artifactId = "${project.name}"
         pom.version = "${project.version}"
       }
     }
