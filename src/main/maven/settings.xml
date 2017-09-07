@@ -201,17 +201,6 @@
             </repositories>
             <pluginRepositories>
                 <pluginRepository>
-                    <id>central</id>
-                    <name>Central Repository</name>
-                    <url>https://repo.maven.apache.org/maven2</url>
-                    <layout>default</layout>
-                    <snapshots><enabled>false</enabled></snapshots>
-                    <releases>
-                        <enabled>false</enabled>
-                        <updatePolicy>never</updatePolicy>
-                    </releases>
-                </pluginRepository>
-                <pluginRepository>
                     <id>OSSRH-releases</id>
                     <name>central releases</name>
                     <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
