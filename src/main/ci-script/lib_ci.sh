@@ -176,7 +176,7 @@ echo "FILTER_SCRIPT: ${FILTER_SCRIPT}"
 ### OSS CI CONTEXT VARIABLES END
 
 ### Load lib scripts
-set -e
+set -e && set -o pipefail
 # >>>>>>>>>> ---------- lib_docker ---------- >>>>>>>>>>
 if [ ! -d "${HOME}/.docker/" ]; then echo "mkdir ${HOME}/.docker/ "; mkdir -p "${HOME}/.docker/"; fi
 
@@ -423,7 +423,7 @@ if [ ${ret_val} -ne 0 ]; then
     cat ${MAVEN_EFFECTIVE_POM_FILE}
     exit 1
 fi
-set -e
+set -e && set -o pipefail
 # <<<<<<<<<< ---------- lib_maven ---------- <<<<<<<<<<
 
 # >>>>>>>>>> ---------- lib_gradle ---------- >>>>>>>>>>
