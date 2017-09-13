@@ -48,6 +48,9 @@
             <item href="#" name="-----" />
             <item href="oss-eureka/index.html" name="oss-eureka" />
             <item href="oss-configserver/index.html" name="oss-configserver" />
+            <item href="oss-configlint/index.html" name="oss-configlint" />
+            <item href="oss-admin/index.html" name="oss-admin" />
+            <item href="oss-keygen/index.html" name="oss-keygen" />
             <item href="#" name="-----" />
             <item href="oss-todomvc/index.html" name="oss-todomvc" />
             <item href="oss-todomvc-app-config/index.html" name="oss-todomvc-app-config" />
