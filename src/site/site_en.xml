@@ -38,13 +38,13 @@
             <item href="oss-common-dependencies/index.html" name="oss-common-dependencies" />
             <item href="oss-release/index.html" name="oss-release" />
             <item href="#" name="-----" />
-            <item href="oss-lib-common/index.html" name="oss-lib-common" />
-            <item href="oss-lib-errorhandle/index.html" name="oss-lib-errorhandle" />
-            <item href="oss-lib-security/index.html" name="oss-lib-security" />
-            <item href="oss-lib-webmvc/index.html" name="oss-lib-webmvc" />
-            <item href="oss-lib-swagger/index.html" name="oss-lib-swagger" />
+            <item href="oss-lib/index.html" name="oss-lib" />
             <item href="oss-lib-adminclient/index.html" name="oss-lib-adminclient" />
             <item href="oss-lib-log4j2/index.html" name="oss-lib-log4j2" />
+            <item href="oss-lib-swagger/index.html" name="oss-lib-swagger" />
+            <item href="oss-lib-webmvc/index.html" name="oss-lib-webmvc" />
+            <item href="oss-lib-errorhandle/index.html" name="oss-lib-errorhandle" />
+            <item href="oss-lib-security/index.html" name="oss-lib-security" />
             <item href="#" name="-----" />
             <item href="oss-eureka/index.html" name="oss-eureka" />
             <item href="oss-configserver/index.html" name="oss-configserver" />
