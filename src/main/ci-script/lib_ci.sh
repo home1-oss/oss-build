@@ -604,6 +604,7 @@ if [ -z "${BUILD_SKIP_COMMANDS_EXECUTION}" ] || [ "${BUILD_SKIP_COMMANDS_EXECUTI
 
     echo ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>> execute '${COMMANDS_WILL_PERFORM[@]}' >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
     for command in ${COMMANDS_WILL_PERFORM[@]}; do
+        set -e  && set -o pipefail
         echo ">>>>>>>>>>>>>>>>>>>> execute '${command}' >>>>>>>>>>>>>>>>>>>>"
         ${command}
         echo "<<<<<<<<<<<<<<<<<<<< done '${command}' <<<<<<<<<<<<<<<<<<<<"
